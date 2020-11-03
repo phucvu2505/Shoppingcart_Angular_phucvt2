@@ -15,7 +15,7 @@ export class ShoppingcartComponent implements OnInit {
       description: 'Description for product item number 1',
       img: 'https://via.placeholder.com/200x150',
       quantity: 0,
-      price: 5.99
+      price: 150000
     },
     {
       id: '2',
@@ -23,7 +23,7 @@ export class ShoppingcartComponent implements OnInit {
       description: 'Description for product item number 2',
       img: 'https://via.placeholder.com/200x150',
       quantity: 0,
-      price: 9.99
+      price: 320000
     }
   ]
 
