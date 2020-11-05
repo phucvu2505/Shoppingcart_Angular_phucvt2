@@ -8,16 +8,8 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   @Input()
-  public products: Product[];
+  public totalProductInShoppingCart: number = 0;
   constructor() {}
 
   ngOnInit(): void {}
-
-  getTotalProductInShoppingcart() {
-    let total: number = 0;
-    for (let i = 0; i < this.products.length; i++) {
-      total += this.products[i].quantity;
-    }
-    return total;
-  }
 }

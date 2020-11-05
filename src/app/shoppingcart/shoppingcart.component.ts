@@ -38,6 +38,22 @@ export class ShoppingcartComponent implements OnInit {
     }
   }
 
+  getSubTotalInShoppingcart() {
+    let total: number = 0;
+    for (let i = 0; i < this.products.length; i++) {
+      total += this.products[i].price * this.products[i].quantity;
+    }
+    return total;
+  }
+
+  getTotalProductInShoppingcart() {
+    let total: number = 0;
+    for (let i = 0; i < this.products.length; i++) {
+      total += this.products[i].quantity;
+    }
+    return total;
+  }
+
   constructor() {}
 
   ngOnInit(): void {}

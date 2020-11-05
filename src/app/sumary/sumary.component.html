@@ -8,22 +8,16 @@
     <ul>
       <li>
         Subtotal
-        <span>{{ getSubTotalInShoppingcart() | currency: "VND":"code" }}</span>
+        <span>{{ subTotal | currency: "VND":"code" }}</span>
       </li>
       <li>
         Tax
-        <span>{{
-          (getSubTotalInShoppingcart() * 0.1).toFixed(2)
-            | currency: "VND":"code"
-        }}</span>
+        <span>{{ (subTotal * 0.1).toFixed(2) | currency: "VND":"code" }}</span>
       </li>
       <li class="total">
         Total
         <span>{{
-          (
-            getSubTotalInShoppingcart() +
-            getSubTotalInShoppingcart() * 0.1
-          ).toFixed(2) | currency: "VND":"code"
+          (subTotal + subTotal * 0.1).toFixed(2) | currency: "VND":"code"
         }}</span>
       </li>
     </ul>

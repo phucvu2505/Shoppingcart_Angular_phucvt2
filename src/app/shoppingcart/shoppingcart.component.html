@@ -1,4 +1,6 @@
-<app-header [products]="products"></app-header>
+<app-header
+  [totalProductInShoppingCart]="getTotalProductInShoppingcart()"
+></app-header>
 <main>
   <section class="container">
     <ul class="products">
@@ -53,5 +55,5 @@
       </li>
     </ul>
   </section>
-  <app-sumary [products]="products"></app-sumary>
+  <app-sumary [subTotal]="getSubTotalInShoppingcart()"></app-sumary>
 </main>

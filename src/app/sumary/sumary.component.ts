@@ -8,15 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class SumaryComponent implements OnInit {
   @Input()
-  public products: Product[];
+  public subTotal: number = 0;
   constructor() {}
   ngOnInit(): void {}
-
-  getSubTotalInShoppingcart() {
-    let total: number = 0;
-    for (let i = 0; i < this.products.length; i++) {
-      total += this.products[i].price * this.products[i].quantity;
-    }
-    return total;
-  }
 }
