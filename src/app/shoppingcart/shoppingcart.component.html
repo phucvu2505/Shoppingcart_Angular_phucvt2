@@ -1,6 +1,9 @@
 <app-header
   [totalProductInShoppingCart]="getTotalProductInShoppingcart()"
 ></app-header>
+<div class="checkout" *ngIf="products.length == 0">
+  <button type="button" (click)="refreshShoppingCart()">Shopping Now</button>
+</div>
 <main>
   <section class="container">
     <ul class="products">

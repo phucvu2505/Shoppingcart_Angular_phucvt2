@@ -1,0 +1,86 @@
+<mat-toolbar color="primary" class="flex-toolbar">
+  <span>KANBAN BOARD</span>
+</mat-toolbar>
+
+<div class="row">
+  <div cdkDropListGroup class="flex-drop-group">
+    <div class="col-md-3 example-container">
+      <mat-card class="example-card">
+        <mat-card-header class="flex-card-header">
+          <mat-card-title>TODO ({{ todos.length }})</mat-card-title>
+          <mat-icon aria-hidden="false" aria-label="Example home icon"
+            >delete</mat-icon
+          >
+        </mat-card-header>
+        <div
+          cdkDropList
+          [cdkDropListData]="todos"
+          class="example-list"
+          cdkDropListSortingDisabled
+          (cdkDropListDropped)="drop($event)"
+        >
+          <div class="example-box" *ngFor="let item of todos" cdkDrag>
+            {{ item }}
+          </div>
+        </div>
+        <div class="flex-div-add-job">
+          <input matInput placeholder="New Job" style="width: 100%"/>
+          <button mat-flat-button color="primary" matSuffix>Add</button>
+        </div>
+      </mat-card>
+    </div>
+
+    <div class="col-md-3 example-container">
+      <mat-card class="example-card">
+        <mat-card-header class="flex-card-header">
+          <mat-card-title>DOING ({{ doings.length }})</mat-card-title>
+          <mat-icon aria-hidden="false" aria-label="Example home icon"
+            >delete</mat-icon
+          >
+        </mat-card-header>
+        <div
+          cdkDropList
+          [cdkDropListData]="doings"
+          class="example-list"
+          (cdkDropListDropped)="drop($event)"
+        >
+          <div class="example-box" *ngFor="let item of doings" cdkDrag>
+            {{ item }}
+          </div>
+        </div>
+
+        <div class="flex-div-add-job">
+          <input matInput placeholder="New Job" style="width: 100%"/>
+          <button mat-flat-button color="primary" matSuffix>Add</button>
+        </div>
+      </mat-card>
+    </div>
+
+    <div class="col-md-3 example-container">
+      <mat-card class="example-card">
+        <mat-card-header class="flex-card-header">
+          <mat-card-title>DONE ({{ dones.length }})</mat-card-title>
+          <mat-icon aria-hidden="false" aria-label="Example home icon"
+            >delete</mat-icon
+          >
+        </mat-card-header>
+        <div
+          cdkDropList
+          [cdkDropListData]="dones"
+          class="example-list"
+          cdkDropListSortingDisabled
+          (cdkDropListDropped)="drop($event)"
+        >
+          <div class="example-box" *ngFor="let item of dones" cdkDrag>
+            {{ item }}
+          </div>
+        </div>
+
+        <div class="flex-div-add-job">
+          <input matInput placeholder="New Job" style="width: 100%" />
+          <button mat-flat-button color="primary" matSuffix>Add</button>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</div>

@@ -1,5 +1,7 @@
+import { ValidationService } from './../service/validation.service';
 import { Product } from './product.model';
 import { Component, OnInit } from '@angular/core';
+import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-shoppingcart',
@@ -7,7 +9,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./shoppingcart.component.css'],
 })
 export class ShoppingcartComponent implements OnInit {
-  products: Product[] = [
+  form: FormGroup = new FormGroup({});
+
+  init: Product[] = [
     {
       id: '1',
       name: 'PRODUCT ITEM NUMBER 1',
@@ -26,6 +30,18 @@ export class ShoppingcartComponent implements OnInit {
     },
   ];
 
+  products: Product[] = [];
+
+  constructor(private fb: FormBuilder) {
+    this.form = fb.group({
+      quantity: ['', [ValidationService.positiveNumber]],
+    });
+  }
+
+  ngOnInit(): void {
+    this.products = Object.assign([], this.init);
+  }
+
   removeProduct(id: string) {
     if (confirm('Bạn có muốn xoá sản phẩm ' + id + ' không?') == true) {
       for (let i = 0; i < this.products.length; i++) {
@@ -36,6 +52,10 @@ export class ShoppingcartComponent implements OnInit {
     } else {
       return 0;
     }
+  }
+
+  refreshShoppingCart() {
+    this.products = Object.assign([], this.init);
   }
 
   getSubTotalInShoppingcart() {
@@ -53,8 +73,4 @@ export class ShoppingcartComponent implements OnInit {
     }
     return total;
   }
-
-  constructor() {}
-
-  ngOnInit(): void {}
 }
