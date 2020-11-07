@@ -1,4 +1,4 @@
-<section class="container">
+<section class="container" *ngIf="subTotal > 0">
   <div class="promotion" *ngIf="promoCode != '' || promoCode != null">
     <label for="promo-code">Have A Promo Code?</label>
     <input type="text" id="promo-code" [(ngModel)]="promoCode" />

@@ -1,3 +1,11 @@
+span{
+  border: solid 1px #ccc;
+  width: 100%;;
+  height: 30px;
+  display: flex;
+  align-items: center;
+}
+
 .flex-drop-group {
   display: flex;
   justify-content: space-around;
@@ -18,6 +26,11 @@
   display: flex;
 }
 
+.input-add-job {
+  width: 100%;
+  padding-left: 15px;
+}
+
 .example-container {
   width: 390px;
   max-width: 100%;
@@ -36,8 +49,8 @@
 }
 
 .example-box {
-  padding: 20px 10px;
-  border-bottom: solid 1px #ccc;
+  padding: 12px 10px;
+  /* border-bottom: solid 1px #ccc; */
   color: rgba(0, 0, 0, 0.87);
   display: flex;
   flex-direction: row;

@@ -1,6 +1,4 @@
-<mat-toolbar color="primary" class="flex-toolbar">
-  <span>KANBAN BOARD</span>
-</mat-toolbar>
+<mat-toolbar color="primary" class="flex-toolbar"> KANBAN BOARD </mat-toolbar>
 
 <div class="row">
   <div cdkDropListGroup class="flex-drop-group">
@@ -16,15 +14,14 @@
           cdkDropList
           [cdkDropListData]="todos"
           class="example-list"
-          cdkDropListSortingDisabled
           (cdkDropListDropped)="drop($event)"
         >
           <div class="example-box" *ngFor="let item of todos" cdkDrag>
-            {{ item }}
+            <span>{{ item }}</span>
           </div>
         </div>
         <div class="flex-div-add-job">
-          <input matInput placeholder="New Job" style="width: 100%"/>
+          <input matInput placeholder="New Job" class="input-add-job" />
           <button mat-flat-button color="primary" matSuffix>Add</button>
         </div>
       </mat-card>
@@ -45,12 +42,12 @@
           (cdkDropListDropped)="drop($event)"
         >
           <div class="example-box" *ngFor="let item of doings" cdkDrag>
-            {{ item }}
+            <span>{{ item }}</span>
           </div>
         </div>
 
         <div class="flex-div-add-job">
-          <input matInput placeholder="New Job" style="width: 100%"/>
+          <input matInput placeholder="New Job" class="input-add-job" />
           <button mat-flat-button color="primary" matSuffix>Add</button>
         </div>
       </mat-card>
@@ -68,16 +65,15 @@
           cdkDropList
           [cdkDropListData]="dones"
           class="example-list"
-          cdkDropListSortingDisabled
           (cdkDropListDropped)="drop($event)"
         >
           <div class="example-box" *ngFor="let item of dones" cdkDrag>
-            {{ item }}
+            <span>{{ item }}</span>
           </div>
         </div>
 
         <div class="flex-div-add-job">
-          <input matInput placeholder="New Job" style="width: 100%" />
+          <input matInput placeholder="New Job" class="input-add-job" />
           <button mat-flat-button color="primary" matSuffix>Add</button>
         </div>
       </mat-card>
