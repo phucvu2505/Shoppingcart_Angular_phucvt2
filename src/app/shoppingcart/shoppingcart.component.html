@@ -27,13 +27,18 @@
 
         <div class="col right">
           <div class="quantity">
-            <!-- <input type="number" class="quantity" step="1" [value]="0" ([ngModel])="item.quantity" /> -->
             <input
               type="number"
               class="quantity"
               step="1"
+              required
               [(ngModel)]="item.quantity"
+              #name="ngModel"
             />
+          </div>
+
+          <div *ngIf="name.value < 0" class="alert alert-danger">
+            So luong ko duoc nho hon 0
           </div>
 
           <div class="remove">

@@ -9,8 +9,6 @@ import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./shoppingcart.component.css'],
 })
 export class ShoppingcartComponent implements OnInit {
-  form: FormGroup = new FormGroup({});
-
   init: Product[] = [
     {
       id: '1',
@@ -32,11 +30,7 @@ export class ShoppingcartComponent implements OnInit {
 
   products: Product[] = [];
 
-  constructor(private fb: FormBuilder) {
-    this.form = fb.group({
-      quantity: ['', [ValidationService.positiveNumber]],
-    });
-  }
+  constructor() {}
 
   ngOnInit(): void {
     this.products = Object.assign([], this.init);
@@ -61,7 +55,8 @@ export class ShoppingcartComponent implements OnInit {
   getSubTotalInShoppingcart() {
     let total: number = 0;
     for (let i = 0; i < this.products.length; i++) {
-      total += this.products[i].price * this.products[i].quantity;
+      if (this.products[i].quantity < 0) return 0;
+      else total += this.products[i].price * this.products[i].quantity;
     }
     return total;
   }
@@ -69,6 +64,7 @@ export class ShoppingcartComponent implements OnInit {
   getTotalProductInShoppingcart() {
     let total: number = 0;
     for (let i = 0; i < this.products.length; i++) {
+      if (this.products[i].quantity < 0) return 0;
       total += this.products[i].quantity;
     }
     return total;
