@@ -1,38 +1,27 @@
-span{
+span {
   border: solid 1px #ccc;
-  width: 100%;;
+  width: 100%;
   height: 30px;
   display: flex;
   align-items: center;
 }
 
-.flex-drop-group {
+.flex-main {
   display: flex;
-  justify-content: space-around;
+  flex: 1 1 auto;
+  overflow-y: auto;
 }
 
-.flex-toolbar {
-  display: flex;
-  justify-content: center;
-}
-
-.flex-card-header {
-  display: flex;
-  justify-content: space-between;
-}
-
-.flex-div-add-job {
-  margin-top: 20px;
-  display: flex;
-}
-
-.input-add-job {
-  width: 100%;
-  padding-left: 15px;
+.card {
+  min-width: 25%;
+  max-width: 25%;
+  height: 600px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .example-container {
-  width: 390px;
+  width: 400px;
   max-width: 100%;
   margin: 0 25px 25px 0;
   display: inline-block;
@@ -49,8 +38,8 @@ span{
 }
 
 .example-box {
-  padding: 12px 10px;
-  /* border-bottom: solid 1px #ccc; */
+  padding: 20px 10px;
+  border-bottom: solid 1px #ccc;
   color: rgba(0, 0, 0, 0.87);
   display: flex;
   flex-direction: row;

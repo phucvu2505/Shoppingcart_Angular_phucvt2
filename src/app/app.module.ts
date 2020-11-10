@@ -15,6 +15,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { SimpleModalModule } from 'ngx-simple-modal';
+import { ConfirmComponent } from './confirm/confirm.model';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -24,6 +27,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
     SumaryComponent,
     KanbanBoardComponent,
     WelcomeComponent,
+    ConfirmComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,7 +40,23 @@ import { WelcomeComponent } from './welcome/welcome.component';
     MatToolbarModule,
     MatIconModule,
     MatFormFieldModule,
+    SimpleModalModule,
+    ToastrModule.forRoot({
+      timeOut: 2000,
+      positionClass: 'toast-bottom-right',
+      closeButton: false,
+      titleClass: 'toast-title',
+      messageClass: 'toast-message',
+      preventDuplicates: true,
+      iconClasses: {
+        error: 'toast-error',
+        info: 'toast-info',
+        success: 'toast-success',
+        warning: 'toast-warning',
+      },
+    }),
   ],
+  entryComponents: [ConfirmComponent],
   providers: [],
   bootstrap: [AppComponent],
 })

@@ -1,82 +1,50 @@
-<mat-toolbar color="primary" class="flex-toolbar"> KANBAN BOARD </mat-toolbar>
+<mat-toolbar color="primary"> KANBAN BOARD </mat-toolbar>
 
-<div class="row">
-  <div cdkDropListGroup class="flex-drop-group">
-    <div class="col-md-3 example-container">
-      <mat-card class="example-card">
-        <mat-card-header class="flex-card-header">
-          <mat-card-title>TODO ({{ todos.length }})</mat-card-title>
-          <mat-icon aria-hidden="false" aria-label="Example home icon"
-            >delete</mat-icon
-          >
-        </mat-card-header>
-        <div
-          cdkDropList
-          [cdkDropListData]="todos"
-          class="example-list"
-          (cdkDropListDropped)="drop($event)"
-        >
-          <div class="example-box" *ngFor="let item of todos" cdkDrag>
-            <span>{{ item }}</span>
-          </div>
-        </div>
-        <div class="flex-div-add-job">
-          <input matInput placeholder="New Job" class="input-add-job" />
-          <button mat-flat-button color="primary" matSuffix>Add</button>
-        </div>
-      </mat-card>
+<div class="flex-main" cdkDropListGroup>
+  <mat-card class="card" *ngFor="let board of boards" fxFlex>
+    <mat-card-header class="flex-card-header">
+      <mat-card-title>
+        {{ board.name }} ({{ board.contents.length }})</mat-card-title
+      >
+      <mat-icon (click)="closeTab(board.id)">delete</mat-icon>
+    </mat-card-header>
+    <div
+      cdkDropList
+      [cdkDropListData]="board.contents"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)"
+    >
+      <div class="example-box" *ngFor="let item of board.contents" cdkDrag>
+        <span>{{ item }}</span>
+        <mat-icon (click)="deleteJob(item, board)">delete</mat-icon>
+      </div>
     </div>
 
-    <div class="col-md-3 example-container">
-      <mat-card class="example-card">
-        <mat-card-header class="flex-card-header">
-          <mat-card-title>DOING ({{ doings.length }})</mat-card-title>
-          <mat-icon aria-hidden="false" aria-label="Example home icon"
-            >delete</mat-icon
-          >
-        </mat-card-header>
-        <div
-          cdkDropList
-          [cdkDropListData]="doings"
-          class="example-list"
-          (cdkDropListDropped)="drop($event)"
-        >
-          <div class="example-box" *ngFor="let item of doings" cdkDrag>
-            <span>{{ item }}</span>
-          </div>
-        </div>
-
-        <div class="flex-div-add-job">
-          <input matInput placeholder="New Job" class="input-add-job" />
-          <button mat-flat-button color="primary" matSuffix>Add</button>
-        </div>
-      </mat-card>
+    <div class="flex-div-add-job">
+      <input
+        matInput
+        placeholder="New Job"
+        class="input-add-job"
+        [(ngModel)]="board.newJob"
+      />
+      <button
+        mat-flat-button
+        color="primary"
+        matSuffix
+        (click)="addNewJob(board)"
+      >
+        Add
+      </button>
     </div>
-
-    <div class="col-md-3 example-container">
-      <mat-card class="example-card">
-        <mat-card-header class="flex-card-header">
-          <mat-card-title>DONE ({{ dones.length }})</mat-card-title>
-          <mat-icon aria-hidden="false" aria-label="Example home icon"
-            >delete</mat-icon
-          >
-        </mat-card-header>
-        <div
-          cdkDropList
-          [cdkDropListData]="dones"
-          class="example-list"
-          (cdkDropListDropped)="drop($event)"
-        >
-          <div class="example-box" *ngFor="let item of dones" cdkDrag>
-            <span>{{ item }}</span>
-          </div>
-        </div>
-
-        <div class="flex-div-add-job">
-          <input matInput placeholder="New Job" class="input-add-job" />
-          <button mat-flat-button color="primary" matSuffix>Add</button>
-        </div>
-      </mat-card>
-    </div>
-  </div>
+  </mat-card>
 </div>
+
+<input
+  matInput
+  placeholder="New Board"
+  class="input-add-job"
+  [(ngModel)]="newBoardName"
+/>
+<button mat-flat-button color="primary" matSuffix (click)="addNewBoard()">
+  Add
+</button>
